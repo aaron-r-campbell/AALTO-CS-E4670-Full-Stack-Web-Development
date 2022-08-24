@@ -1,0 +1,8 @@
+# Diagram created by https://www.websequencediagrams.com
+title Example App: New note using SPA
+note right of Browser: User types note into text field
+note right of Browser: User clicks Save button
+note right of Browser: Browser updates page contents to include new note, does not re-retrieve data.json so only this user's submission is added.
+Browser->Server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_underscore_spa
+Server->Browser: HTTP 201 - Created
+note left of Server: Server adds new note contents to data.json so if the user reloads or another joins they will see this new note as well.

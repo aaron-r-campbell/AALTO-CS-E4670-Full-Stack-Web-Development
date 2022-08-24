@@ -1,0 +1,17 @@
+# Diagram created by https://www.websequencediagrams.com
+title Example App: Adding a note
+note right of Browser: User types new note into text input field
+note right of Browser: User clicks save button
+Browser->Server: HTTP POST: https://studies.cs.helsinki.fi/exampleapp/new_note \n Form data: note=content+goes+here
+note left of Server: Stores new note into JSON file
+Server->Browser: HTTP 302: https://studies.cs.helsinki.fi/exampleapp/notes
+Browser->Server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+Server--> Browser: HTML-code
+Browser->Server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+Server--> Browser: main.css
+Browser->Server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+Server--> Browser: main.js
+note right of Browser: Browser starts executing js-code that requests JSON data from server
+Browser->Server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+Server--> Browser: [{ content: "100?", date: "2022-08-24T12:32:29.758Z" },..., {content: "content goes here", date: ...}]
+note right of Browser: Browser executes the event handler that renders notes to display including the note added by the browser
